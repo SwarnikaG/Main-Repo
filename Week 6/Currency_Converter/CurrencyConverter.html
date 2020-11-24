@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="cc.css">
+    <title>Currency Converter</title>
+  </head>
+  <body>
+    <h1>Currency Converter</h1>
+    <div class="">
+      <label for="Amount">Amount</label>
+      <label for="From">From</label>
+      <label for="To">To</label>
+    </div>
+    <input type="number" name="Amount" value="">
+    <select class="money1" name="money1">
+      <option value="AUD" class= "AUD">AUD</option><option value="BGN"class="BGN">BGN</option>
+      <option value="BRL" class="BRL">BRL</option><option value="CAD"class = "CAD">CAD</option>
+      <option value="CHF" class = "CHF">CHF</option><option value="CNY"class = "CNY">CNY</option>
+      <option value="CZK" class = "CZK">CZK</option><option value="DKK"class = "DKK">DKK</option>
+      <option value="EUR"class = "EUR">EURO</option><option value="GBP" class = "GBP">GBP</option>
+      <option value="HKD"class = "HKD">HKD</option><option value="HRK"class = "HRK">HRK</option>
+      <option value="HUF"class = "HUF">HUF</option><option value="IDR"class = "IDR">IDR</option>
+      <option value="ILS"class = "ILS">ILS</option><option value="INR"class = "INR">INR</option>
+      <option value="ISK"class = "ISK">ISK</option><option value="JPY"class = "JPY">JPY</option>
+      <option value="KRW"class = "KRW">KRW</option><option value="MXN"class = "MXN">MXN</option>
+      <option value="MYR"class = "MYR">MYR</option><option value="NOK"class = "NOK">NOK</option>
+      <option value="NZD"class = "NZD">NZD</option><option value="PHP"class = "PHP">PHP</option>
+      <option value="PLN"class = "PLN">PLN</option><option value="RON"class = "RON">RON</option>
+      <option value="RUB"class = "RUB">RUB</option><option value="SEK"class = "SEK">SEK</option>
+      <option value="SGD"class = "SGD">SGD</option><option value="THB"class = "THB">THB</option>
+      <option value="TRY"class = "TRY">TRY</option><option value="USD"class = "USD" >USD</option>
+      <option value="ZAR"class = "ZAR">ZAR</option>
+    </select>
+    <select class="money2" name="money2">
+      <option value="AUD" class= "AUD">AUD</option><option value="BGN"class="BGN">BGN</option>
+      <option value="BRL" class="BRL">BRL</option><option value="CAD"class = "CAD">CAD</option>
+      <option value="CHF" class = "CHF">CHF</option><option value="CNY"class = "CNY">CNY</option>
+      <option value="CZK" class = "CZK">CZK</option><option value="DKK"class = "DKK">DKK</option>
+      <option value="EUR"class = "EUR">EURO</option><option value="GBP" class = "GBP">GBP</option>
+      <option value="HKD"class = "HKD">HKD</option><option value="HRK"class = "HRK">HRK</option>
+      <option value="HUF"class = "HUF">HUF</option><option value="IDR"class = "IDR">IDR</option>
+      <option value="ILS"class = "ILS">ILS</option><option value="INR"class = "INR">INR</option>
+      <option value="ISK"class = "ISK">ISK</option><option value="JPY"class = "JPY">JPY</option>
+      <option value="KRW"class = "KRW">KRW</option><option value="MXN"class = "MXN">MXN</option>
+      <option value="MYR"class = "MYR">MYR</option><option value="NOK"class = "NOK">NOK</option>
+      <option value="NZD"class = "NZD">NZD</option><option value="PHP"class = "PHP">PHP</option>
+      <option value="PLN"class = "PLN">PLN</option><option value="RON"class = "RON">RON</option>
+      <option value="RUB"class = "RUB">RUB</option><option value="SEK"class = "SEK">SEK</option>
+      <option value="SGD"class = "SGD">SGD</option><option value="THB"class = "THB">THB</option>
+      <option value="TRY"class = "TRY">TRY</option><option value="USD"class = "USD" >USD</option>
+      <option value="ZAR"class = "ZAR">ZAR</option>
+    </select>
+    <button type="submit" name="button" onclick = "makeConvert()">Convert</button>
+    <div class="response-box">
+      <span class="response"><span>
+    </div>
+
+    <script type="text/javascript">
+    
+      let exchangeRatesInfo
+      let Selector1
+      let Selector2
+
+      function makeConvert(){
+        exchangeRatesInfo = {"rates":{"CAD":1.5501,"HKD":9.1737,"ISK":161.3,"PHP":57.147,"DKK":7.4498,"HUF":360.9,"CZK":26.358,"AUD":1.6272,"RON":4.8732,"SEK":10.206,"IDR":16820.13,"INR":87.797,"BRL":6.3371,"RUB":90.2638,"HRK":7.5655,"JPY":123.08,"THB":35.975,"CHF":1.0797,"SGD":1.5924,"PLN":4.4714,"BGN":1.9558,"TRY":8.9373,"CNY":7.7927,"NOK":10.69,"NZD":1.7155,"ZAR":18.3153,"USD":1.1832,"MXN":24.0426,"ILS":3.9595,"GBP":0.89378,"KRW":1321.07,"MYR":4.8517},"base":"EUR"}
+            let amount = document.querySelector("input").value
+            if(amount>0){
+            let selector1 = document.querySelector(".money1").value
+            let selector2 = document.querySelector(".money2").value
+            for(i in exchangeRatesInfo.rates){
+              if (selector1 === i){
+                Selector1 = exchangeRatesInfo.rates[i]
+                break}
+              else{
+              Selector1 = 1;}
+            }
+            for(i in exchangeRatesInfo.rates){
+              if(selector2 === i){
+                Selector2 = exchangeRatesInfo.rates[i]
+                break}
+              else {
+                Selector2 = 1;
+              }
+            }
+            let selector = Selector2/Selector1;
+            let result = amount*selector
+            document.querySelector(".response").innerHTML = selector2 +" "+result;
+          }
+      }
+
+    </script>
+  </body>
+</html>

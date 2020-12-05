@@ -10,10 +10,29 @@ function ReadFile(files){
 }	
 
 async function spellCheck() {	
+    let badwords=[];
     var text = filecontent.value;
     let url = "https://api.textgears.com/spelling?key=1gVny1rfj02gy7kY&text=" + text + "!&language=en-GB";	
-    let response = await fetch(url);	
-    if (response.ok) {	
-        console.log(response.json()); 	
-    }	
+    let response = await fetch(url);
+    let user = await response.json();
+    console.log(user);	
+    for(item of user.response.errors){
+        badwords.push(item.bad);
+    }
+    console.log(badwords);
+    document.getElementById('result').innerHTML = transformContent(text, badwords);
 }	
+
+function transformContent(content, keywords){
+  let temp = content
+
+  keywords.forEach(keyword => {
+    temp = temp.replace(new RegExp(keyword, 'ig'), wrapKeywordWithHTML(keyword, `https://www.google.com/search?q=${keyword}`))
+  })
+
+  return temp
+}
+
+function wrapKeywordWithHTML(keyword, url){
+  return `<a href="${url}" target="_blank"> <span style="font-weight: bold; color: red; font-size: 30px">  ${keyword}  </span> </a>`
+}

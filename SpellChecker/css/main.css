@@ -1,1 +1,7 @@
 /* work in progress */
+
+ul {
+    list-style-type: none;
+    padding-left: 15px;
+    padding-right: 15px;
+  }

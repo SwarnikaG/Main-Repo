@@ -1,11 +1,3 @@
-// $(document).mouseup(function(e) 
-// {
-//     var container = document.getElementById("suggestion");
-//     if (!container.is(e.target) && container.has(e.target).length === 0) 
-//     {
-//         container.style.display = "none";
-//     }
-// });
 let betterwords = new Map();
 
 function ReadFile(files){	
@@ -30,11 +22,6 @@ async function spellCheck() {
         betterwords.set(item.bad,item.better);
         
     }
-    console.log(badwords);
-    console.log(betterwords);
-    for (const [key, value] of betterwords.entries()) {
-        console.log(key, value);
-      }
     document.getElementById('result').innerHTML = transformContent(text, badwords);
     autoCorrect();
 }	
@@ -63,22 +50,26 @@ function autoCorrect(){
                 let ans_div = document.getElementById('suggestion');
                 posDiv(ans_div,event.pageX, event.pageY);
                 suggestion_content = "<ul>";
-                let abc = `correct(${typo_span_i}, this);`;
                 var which_typo = typo_span_i.textContent.trim();
                 for (const [which_typo, value] of betterwords.entries()) {
-                    suggestion_content += `<li onclick =abc>` +value +`</li>`;
+                    if(event.target.innerHTML.trim()==which_typo){
+                        var n = value.length;
+                        for (var i = 0; i < n; i++) {
+                            suggestion_content += "<li class='clickMe'>" +value[i] +"</li>";
+                        }
+                    }
                 }
                 suggestion_content += "<ul>";
                 ans_div.innerHTML = suggestion_content;
+                $('.clickMe').click(function () {
+                    var str = $(this).text();
+                    console.log(str);
+                    event.target.innerHTML = str;
+                });
                 return false;
             });
         }
     );
-}
-
-function correct(word, ref){
-    console.log(word);
-    console.log(ref);
 }
 
 function posDiv(a,x,y){

@@ -61,16 +61,24 @@ function autoCorrect(){
                 }
                 suggestion_content += "<ul>";
                 ans_div.innerHTML = suggestion_content;
-                $('.clickMe').click(function () {
+                $('.clickMe').click(function (e) {
                     var str = $(this).text();
-                    console.log(str);
                     event.target.innerHTML = str;
+                    event.target.style.fontWeight = "";
+                    event.target.style.color = "";  
+                    event.target.style.fontSize = "";
                 });
                 return false;
             });
         }
     );
 }
+$(document).mouseup(function (e) { 
+    if ($(e.target).closest(".container").length 
+                === 0) { 
+        $(".container").hide(); 
+    } 
+}); 
 
 function posDiv(a,x,y){
     a.style.display = "block";

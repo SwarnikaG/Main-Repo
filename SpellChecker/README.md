@@ -35,9 +35,9 @@ click of any suggestion, the faulty word should be replaced by a right one.
 ### Screenshots
 >On right-click you can see suggestions to incorrect words <br>
 
-![Alt text](SpellChecker/img/showing-suggestions.png?raw=true "Optional Title")
+![Alt text](img/showing-suggestions.png?raw=true "Optional Title")
 
 >If you select any word from the suggestions, it will be relaced with the incorrect word. <br>
 
-![Alt text](SpellChecker/img/corrections.png?raw=true "Optional Title")
+![Alt text](img/corrections.png?raw=true "Optional Title")
 
